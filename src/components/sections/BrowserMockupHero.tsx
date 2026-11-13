@@ -71,7 +71,7 @@ const HERO_SLIDES: HeroSlide[] = [
   },
 ];
 
-// Full-bleed layered depth hero matching reference composition
+// Full-bleed layered depth hero with high-contrast mobile typography
 export function BrowserMockupHero() {
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
@@ -90,7 +90,7 @@ export function BrowserMockupHero() {
       aria-label="Atelier Form Hero Showcase"
       className="relative min-h-screen w-full flex flex-col justify-between pt-28 sm:pt-32 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-14 overflow-hidden select-none"
     >
-      {/* Layer 1: Deep Atmospheric Hunter & Bordeaux Lighting */}
+      {/* Atmospheric Hunter & Bordeaux Lighting */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0 transition-all duration-1000"
@@ -98,17 +98,16 @@ export function BrowserMockupHero() {
             background: `radial-gradient(circle at 50% 42%, ${currentSlide.ambientGlow}66 0%, #233126 55%, #121A14 100%)`,
           }}
         />
-        {/* Floor studio shadow & warm spotlight */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[46%] opacity-90"
+          className="absolute inset-x-0 bottom-0 h-[50%] opacity-95"
           style={{
             background:
-              "linear-gradient(180deg, rgba(18,26,20,0) 0%, rgba(15,22,17,0.88) 48%, #0E1410 100%)",
+              "linear-gradient(180deg, rgba(18,26,20,0) 0%, rgba(14,20,16,0.92) 45%, #0C120E 100%)",
           }}
         />
       </div>
 
-      {/* Layer 2: Colossal Backdrop Word ("ATELIER") Behind Furniture */}
+      {/* Colossal Backdrop Word Behind Furniture */}
       <div
         aria-hidden="true"
         className="pointer-events-none relative z-10 w-full flex justify-center items-center mt-2 sm:mt-4"
@@ -121,7 +120,7 @@ export function BrowserMockupHero() {
                 ? { opacity: 0.45 }
                 : { opacity: 0, y: 28, scale: 0.98 }
             }
-            animate={{ opacity: 0.42, y: 0, scale: 1 }}
+            animate={{ opacity: 0.44, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.95, ease: EASING.editorialReveal }}
             className="font-display font-semibold uppercase text-[#D8D0C2] text-[20vw] sm:text-[18.5vw] lg:text-[17vw] leading-[0.85] tracking-[0.04em] text-center whitespace-nowrap"
@@ -131,7 +130,7 @@ export function BrowserMockupHero() {
         </AnimatePresence>
       </div>
 
-      {/* Layer 3: Foreground Furniture Cutout Overlapping the Giant Typography */}
+      {/* Foreground Furniture Cutout Overlapping Giant Typography */}
       <div className="relative z-20 w-full max-w-[1160px] mx-auto -mt-[8vw] sm:-mt-[7.5vw] lg:-mt-[7vw] mb-4 sm:mb-6 flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
@@ -156,22 +155,20 @@ export function BrowserMockupHero() {
               onError={() =>
                 setImgErrors((prev) => ({ ...prev, [currentSlide.id]: true }))
               }
-              className="w-full max-h-[300px] sm:max-h-[380px] lg:max-h-[430px] object-contain drop-shadow-[0_32px_42px_rgba(0,0,0,0.75)]"
+              className="w-full max-h-[280px] sm:max-h-[380px] lg:max-h-[430px] object-contain drop-shadow-[0_32px_42px_rgba(0,0,0,0.75)]"
             />
-            {/* Grounding Contact Shadow Beneath Furniture */}
             <div
               aria-hidden="true"
-              className="w-[72%] h-6 -mt-3 rounded-full bg-black/75 blur-xl"
+              className="w-[72%] h-6 -mt-3 rounded-full bg-black/80 blur-xl"
             />
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Layer 4: Bottom Editorial Bar (Metrics + CTA on Left, Floating Card on Right) */}
+      {/* Bottom Editorial Bar */}
       <div className="relative z-30 max-w-[1440px] w-full mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-8 pt-2">
-        {/* Bottom-Left: 3 Metrics + Pill CTA & Circular Arrow + Description */}
         <div className="space-y-6 max-w-2xl">
-          {/* Metrics Row (Matches "20K+ / 2K+ / 5K+" layout) */}
+          {/* Metrics Row with Elevated Label Contrast */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.id}
@@ -179,14 +176,14 @@ export function BrowserMockupHero() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.7, ease: EASING.architectural }}
-              className="grid grid-cols-3 gap-6 sm:gap-10 max-w-lg"
+              className="grid grid-cols-3 gap-5 sm:gap-10 max-w-lg"
             >
               {currentSlide.stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-[0.03em] text-[#D8D0C2]">
                     {stat.value}
                   </div>
-                  <div className="font-display text-xs sm:text-sm text-[#D8D0C2]/75 mt-0.5">
+                  <div className="font-display text-xs sm:text-sm font-normal tracking-[0.02em] text-[#D8D0C2]/90 mt-1">
                     {stat.label}
                   </div>
                 </div>
@@ -194,7 +191,7 @@ export function BrowserMockupHero() {
             </motion.div>
           </AnimatePresence>
 
-          {/* CTA Pill + Circular Arrow Button + Supporting Line */}
+          {/* CTA Pill + Circular Arrow + High-Readability Cormorant Description */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -205,7 +202,6 @@ export function BrowserMockupHero() {
             }}
             className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6"
           >
-            {/* Dual Pill + Circle Button from Reference */}
             <div className="inline-flex items-center shrink-0">
               <a
                 href="#collections"
@@ -222,13 +218,13 @@ export function BrowserMockupHero() {
               </a>
             </div>
 
-            <p className="font-serif text-base sm:text-lg text-[#D8D0C2]/85 leading-snug max-w-md">
+            <p className="font-serif font-medium text-lg sm:text-[19px] text-[#D8D0C2] leading-relaxed max-w-md">
               {currentSlide.description}
             </p>
           </motion.div>
         </div>
 
-        {/* Bottom-Right: Compact Floating Glass Preview Card ("01/03" + Progress Bar) */}
+        {/* Bottom-Right Floating Preview Card */}
         <motion.button
           type="button"
           onClick={handleNext}
@@ -240,10 +236,9 @@ export function BrowserMockupHero() {
             delay: 0.35,
             ease: EASING.architectural,
           }}
-          className="group w-full sm:w-64 rounded-2xl bg-[#D8D0C2]/[0.12] backdrop-blur-md border border-[#D8D0C2]/20 p-3 text-left transition-all duration-300 hover:bg-[#D8D0C2]/[0.18] hover:border-[#8C603E]/60 shrink-0"
+          className="group w-full sm:w-64 rounded-2xl bg-[#18221A]/85 backdrop-blur-md border border-[#D8D0C2]/25 p-3 text-left transition-all duration-300 hover:bg-[#233126]/90 hover:border-[#8C603E] shrink-0"
         >
-          {/* Next Piece Preview Thumbnail */}
-          <div className="relative h-24 w-full rounded-xl overflow-hidden bg-[#18221A]/80 flex items-center justify-center p-2 mb-2.5">
+          <div className="relative h-24 w-full rounded-xl overflow-hidden bg-[#121A14] flex items-center justify-center p-2 mb-2.5">
             <img
               src={
                 imgErrors[nextSlide.id]
@@ -253,12 +248,11 @@ export function BrowserMockupHero() {
               alt={nextSlide.title}
               className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
             />
-            <span className="absolute top-2 right-2 font-display text-[10px] tracking-[0.14em] uppercase px-2 py-0.5 rounded-full bg-[#233126]/80 text-[#D8D0C2]/80">
+            <span className="absolute top-2 right-2 font-display text-[10px] font-medium tracking-[0.14em] uppercase px-2.5 py-0.5 rounded-full bg-[#233126] text-[#D8D0C2] border border-[#D8D0C2]/20">
               Next
             </span>
           </div>
 
-          {/* Index & Segmented Progress Bar (Matches "01/10" bottom bar in reference) */}
           <div className="flex items-center justify-between gap-3 px-1">
             <span className="font-display text-xs font-medium tracking-[0.1em] text-[#D8D0C2]">
               {currentSlide.indexLabel}
@@ -271,7 +265,7 @@ export function BrowserMockupHero() {
                   className={`h-1 rounded-full transition-all duration-500 ${
                     idx === activeIndex
                       ? "w-7 bg-[#D8D0C2]"
-                      : "w-3 bg-[#D8D0C2]/30"
+                      : "w-3 bg-[#D8D0C2]/40"
                   }`}
                 />
               ))}
